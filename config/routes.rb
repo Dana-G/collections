@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  root 'static#home'
+  resources :users
+  get 'users/new'
+
+
+
+
   # root 'welcome#index'
 
   # Example resource route (maps HTTP verbs to controller actions

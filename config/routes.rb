@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  root 'static#home'
   resources :users
-  get 'users/new'
+  get 'signup', { to: 'users#new', as: 'signup' }
 
-
-
+  root 'static#home'
 
   # root 'welcome#index'
 

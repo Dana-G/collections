@@ -1,4 +1,9 @@
+#
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
+
   def new
     @user = User.new
   end
@@ -6,7 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # redirect_to_root_path, notice: 'Thanks for signing up.'
+      redirect_to root_path, notice: 'Thanks for signing up.'
     else
       render 'new'
     end
@@ -15,7 +20,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation,
-                                 :nickname, :description)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

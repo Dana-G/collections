@@ -5,7 +5,7 @@ RSpec.feature 'VisitStaticHomePage' do
       scenario 'I see homepage content' do
         visit root_url
         expect(page).to have_title('Collections')
-        page.has_content?('Static#home')
+        expect(page).to have_content('Static#home')
       end
     end
   end

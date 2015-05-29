@@ -1,8 +1,8 @@
 %h1 Sign Up
-#new_form
+#new-form
 = form_for(@user) do |f|
   - if @user.errors.any?
-    .error_messages
+    .error-messages
       %h2 Form is invalid
       %ul
         - @user.errors.full_messages.each do |message|

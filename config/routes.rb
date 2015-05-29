@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, only: [:create]
   get 'signup',  to: 'users#new', as: 'signup'
 
   root 'static#home'

@@ -30,7 +30,7 @@ RSpec.feature 'User create' do
           fill_in 'user_password_confirmation', with: password_confirmation
         end
         click_button('Sign Up')
-        expect(page).to have_content('error')
+        expect(page).to have_content('invalid')
       end
     end
   end

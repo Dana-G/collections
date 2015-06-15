@@ -1,18 +1,18 @@
 %h1 Login
+#login-user
+  = form_tag(login_path, method: :post) do
 
-=form_for(@user, url: login_url) do |f|
+    .field
+      = label_tag :email
+      = text_field_tag :email
 
-  .field
-  =f.label :email
-  =f.text_field :email
+    .field
+      = label_tag :password
+      = password_field_tag :password
 
-  .field
-  =f.label :password
-  =f.text_field :password
+    .field
+      = label_tag :password_confirmation
+      = password_field_tag :password_confirmation
 
-  .field
-  =f.label :password_confirmation
-  =f.text_field :password_confirmation
-
-  .actions
-  =f.submit 'Login'
+    .actions
+      = submit_tag 'Login'

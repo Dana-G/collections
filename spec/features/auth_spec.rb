@@ -6,7 +6,7 @@ RSpec.feature 'User authenticate' do
   let(:password_confirmation) { 'I am going to use a very secure password' }
 
   context 'As a non-credentialed member' do
-    let(:user) do
+    let!(:user) do
       create(:user,
              email: email,
              password: password,
@@ -16,17 +16,16 @@ RSpec.feature 'User authenticate' do
 
     context 'providing valid login information' do
       scenario 'I can authenticate as a user of collections' do
-        visit root_url
-        expect(page).to have_content('Login')
+        visit login_path
         expect(page).not_to have_content('Logout')
         click_link('Login')
-        within('#user-header') do
-          fill_in 'user_email', with: email
-          fill_in 'user_password', with: password
-          fill_in 'user_password_confirmation', with: password_confirmation
+        within('#login-user') do
+          fill_in 'Email', with: email
+          fill_in 'password', with: password
+          fill_in 'password_confirmation', with: password_confirmation
         end
         click_button('Login')
-        expect(page).to have_content('You are logged in')
+        expect(page).to have_content('Logged in')
         expect(page).to have_content('Logout')
         expect(page).to_not have_content('Login')
         expect(page).to_not have_content('Sign Up')
@@ -40,30 +39,29 @@ RSpec.feature 'User authenticate' do
     let(:password_confirmation) { 'This password is an invalid password' }
 
     scenario 'I can see errors' do
-      visit root_url
-      expect(page).to have_content('Login')
+      visit login_path
       expect(page).to have_content('Sign Up')
       expect(page).to_not have_content('Logout')
       click_link('Login')
-      within('#user-header') do
-        fill_in 'user_email', with: email
-        fill_in 'user_password', with: password
-        fill_in 'user_password_confirmation', with: password_confirmation
+      within('#login-user') do
+        fill_in 'email', with: email
+        fill_in 'password', with: password
+        fill_in 'password_confirmation', with: password_confirmation
       end
       click_button('Login')
       expect(page).to have_link('Login')
       expect(page).to_not have_content('Logout')
-      expect(page).to have content('invalid')
-      expect(page).to have content('Sign Up')
+      expect(page).to have_content('invalid')
+      expect(page).to have_content('Sign Up')
     end
   end
 
   context 'As a credentialed user' do
     scenario 'I can log out' do
-      visit root_url
-      expect(page).to have_content('You have logged out')
-      expect(page).to_not have('Logout')
-      expect(page).to have_link
+      create_current_user
+      visit logout_url
+      expect(page).to have_content('You have successfully logged out')
+      expect(page).to_not have_content('Logout')
     end
   end
 end

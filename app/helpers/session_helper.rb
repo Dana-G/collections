@@ -11,4 +11,8 @@ module SessionHelper
   def logout_link
     link_to 'Logout', logout_path if current_user
   end
+
+  def edit_link
+    link_to 'edit', edit_user_path(current_user) if current_user
+  end
 end

@@ -14,7 +14,7 @@ RSpec.feature 'User create' do
           fill_in 'user_password', with: password
           fill_in 'user_password_confirmation', with: password_confirmation
         end
-        click_button('Sign Up')
+        click_button('submit')
         expect(page).to have_content('Thanks for signing up')
       end
     end
@@ -29,7 +29,7 @@ RSpec.feature 'User create' do
           fill_in 'user_password', with: password
           fill_in 'user_password_confirmation', with: password_confirmation
         end
-        click_button('Sign Up')
+        click_button('submit')
         expect(page).to have_content('invalid')
       end
     end

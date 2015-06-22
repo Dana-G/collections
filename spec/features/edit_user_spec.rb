@@ -7,7 +7,7 @@ RSpec.feature 'User edit' do
       visit root_url
       expect(page).to_not have_link('edit profile')
       visit edit_user_path(other_user)
-      page(expect).to have_content('unauthorized')
+      expect(page).to have_content('unauthorized')
     end
   end
 
@@ -29,16 +29,12 @@ RSpec.feature 'User edit' do
       click_link('edit')
       fill_in 'user_email', with: ''
       click_button('submit')
-      expect(page).to have_content('fail')
+      expect(page).to have_content('invalid')
     end
-  end
 
-  context 'As an authenticated user' do
     scenario 'I can not edit other user\'s information' do
-      visit root_url
-      expect(page).to_not have_link('edit profile')
       visit edit_user_path(other_user)
-      page(expect).to have_content('unauthorized')
+      expect(page).to have_content('unauthorized')
     end
   end
 end

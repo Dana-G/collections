@@ -1,5 +1,7 @@
 # controllers/users_controller.rb
 class UsersController < ApplicationController
+  before_action :check_user, only: [:edit, :update]
+
   def index
     @users = User.all
   end
@@ -37,6 +39,15 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def check_user
+    redirect_to root_url, notice: 'unauthorized' unless current_user_match?
+  end
+
+  def current_user_match?
+    return false unless current_user
+    params[:id] == current_user.id.to_s
+  end
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)

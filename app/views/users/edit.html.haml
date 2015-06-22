@@ -1,0 +1,16 @@
+#edit-user
+  = form_for(@user) do |f|
+    - if @user.errors.any?
+      .error-messages
+        %h2 Form is invalid
+        %ul
+          - @user.errors.full_messages.each do |message|
+            %li= message
+
+    .field
+      = f.label :email
+      = f.text_field :email
+
+    .actions
+      = f.submit 'submit'
+

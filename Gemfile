@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'haml-rails'
+# more readable console printing
+gem 'awesome_print', '~> 1.6.1'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

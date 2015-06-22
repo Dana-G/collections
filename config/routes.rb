@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  resources :sessions
+  resources :users, except: [:index, :destroy]
+
+  get 'login', to: 'sessions#new', as: 'login'
+  post 'login', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  get 'signup',  to: 'users#new', as: 'signup'
+
+  root 'static#home'
+
   # root 'welcome#index'
 
   # Example resource route (maps HTTP verbs to controller actions

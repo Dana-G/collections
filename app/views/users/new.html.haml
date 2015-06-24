@@ -21,7 +21,7 @@
       = f.password_field :password_confirmation
 
     .field
-      = f.file_field :avatar
+      = f.file_field :avatar, required: true
 
     .actions
       = f.submit 'submit'

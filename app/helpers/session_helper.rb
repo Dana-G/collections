@@ -19,4 +19,8 @@ module SessionHelper
     return link_to 'edit', edit_user_path(current_user) if current_user
     ''
   end
+
+  def avatar(user)
+    return image_tag user.avatar.thumb('200x100#').url if user.avatar_stored?
+  end
 end

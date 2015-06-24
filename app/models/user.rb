@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
               with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
             }
 
-  extend Dragonfly::Model
   dragonfly_accessor :avatar
+  validates_presence_of :avatar
 end

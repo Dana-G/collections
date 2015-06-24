@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users, except: [:destroy]
-  resources :sessions
+  resources :sessions, only: [:create, :destroy]
 
   get 'login', to: 'sessions#new', as: 'login'
   post 'login', to: 'sessions#create'

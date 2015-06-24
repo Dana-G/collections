@@ -1,6 +1,5 @@
 %h1 User Profile
 
-= image_tag @user.photo.thumb('300x200#')
-= link_to @user.avatar_uid
-=@user.email
+= avatar(@user)
+= @user.email
 

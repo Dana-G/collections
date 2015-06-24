@@ -1,7 +1,5 @@
 # contollers/sessions_controller.rb
 class SessionsController < ApplicationController
-  # before_filter :authorize
-
   def new
     @user = User.new
   end

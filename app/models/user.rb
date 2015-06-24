@@ -1,6 +1,7 @@
 #
 class User < ActiveRecord::Base
   has_secure_password
+  self.per_page = 10
 
   validates :email,
             presence: true,

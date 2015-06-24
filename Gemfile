@@ -50,6 +50,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.2.1'
+
+  gem 'will_paginate', '~> 3.0.6'
 end
 
 group :test do

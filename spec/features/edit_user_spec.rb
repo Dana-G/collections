@@ -12,11 +12,11 @@ RSpec.feature 'User edit' do
   end
 
   context 'as an authenticated user' do
-    let!(:user) { create_current_user }
+    let(:user) { create_current_user }
     let(:new_email) { 'goop@great.com' }
 
     scenario 'I can edit my user information' do
-      visit root_url
+      visit user_path(user)
       click_link('edit')
       fill_in 'user_email', with: new_email
       click_button('submit')
@@ -25,7 +25,7 @@ RSpec.feature 'User edit' do
     end
 
     scenario 'I can see errors with bad information' do
-      visit root_url
+      visit user_path(user)
       click_link('edit')
       fill_in 'user_email', with: ''
       click_button('submit')

@@ -23,4 +23,10 @@ module SessionHelper
     return link_to 'edit', edit_user_path(current_user) if current_user
     ''
   end
+
+  def add_album_link
+    return link_to 'add album', add_album_path if current_user
+    ''
+  end
+
 end

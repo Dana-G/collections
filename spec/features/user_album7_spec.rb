@@ -10,7 +10,8 @@ RSpec.feature 'User edit' do
 
     scenario 'I can add a new image collection to my account' do
       visit user_path(user)
-      click_link('create album')
+      save_and_open_page
+      click_link('Create Album')
       fill_in 'album_name', with: album_name
       click_button('submit')
       expect(page).to have_content('success')
@@ -35,7 +36,7 @@ RSpec.feature 'User edit' do
     scenario 'I can not edit information for the image collection for others' do
       visit user_path(other_user)
       click_link('album_name')
-      expect(page).to_not  have_content('Edit Albums')
+      expect(page).to_not have_content('Edit Albums')
     end
   end
 end

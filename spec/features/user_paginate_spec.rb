@@ -2,6 +2,7 @@
 require 'feature_helper'
 RSpec.feature 'User edit' do
   let!(:other_user) { create(:user) }
+  let!(:other_album) { create(:album, user: other_user) }
 
   context 'As a non-credentialed user' do
     scenario 'I can view a list of users' do

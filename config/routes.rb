@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'albums/new'
-
-  resources :users, except: [:destroy]
+  resources :users do
+    resources :albums, shallow: true
+  end
   resources :sessions, only: [:create, :destroy]
-  resources :albums
 
   get 'login', to: 'sessions#new', as: 'login'
   post 'login', to: 'sessions#create'

@@ -1,6 +1,6 @@
-%h1 Create Album
-#new-album
-  = form_for ([@album.user, @album]) do |f|
+%h1 Edit Album
+#edit-album
+  = form_for @album do |f|
     - if @album.errors.any?
       .error-messages
         %h2 Form is invalid

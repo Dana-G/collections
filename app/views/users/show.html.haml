@@ -1,7 +1,11 @@
-%h1 User Profile
+%h1 User Profiles
 
 = avatar(@user)
 = @user.email
 
-= link_to('%h1 Create Album') new_album_path(@user)
+%h2 Albums
 
+- @user.albums.each do |album|
+  = link_to album.name, edit_album_path(album)
+
+%p= link_to 'new album', new_user_album_path(current_user)

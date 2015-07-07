@@ -1,8 +1,14 @@
 #
 class User < ActiveRecord::Base
+  has_many :albums, dependent: :destroy, inverse_of: :user
+
+  # authorization
   has_secure_password
+
+  # paginate
   self.per_page = 10
 
+  # form
   validates :email,
             presence: true,
             uniqueness: { case_sensitive: true },
@@ -10,6 +16,8 @@ class User < ActiveRecord::Base
               with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
             }
 
+
+  # Dragonfly Images
   extend Dragonfly::Model
   dragonfly_accessor :avatar
   # validates_presence_of :avatar

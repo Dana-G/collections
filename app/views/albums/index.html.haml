@@ -1,0 +1,6 @@
+%h1  All Albums
+%p= will_paginate @albums
+%ul
+  - @albums.each do |album|
+    %li= link_to album_path, user
+

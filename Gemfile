@@ -49,6 +49,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.2.1'
 
   gem 'will_paginate', '~> 3.0.6'
+
+  # rails chrome browser helper
+  gem 'meta_request'
 end
 
 group :test do

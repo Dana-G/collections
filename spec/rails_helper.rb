@@ -15,7 +15,6 @@ RSpec.configure do |config|
     FactoryGirl.lint
     DatabaseCleaner.clean_with :truncation
     DatabaseCleaner.strategy = :transaction
-
   end
 
   config.around(:each) do |example|

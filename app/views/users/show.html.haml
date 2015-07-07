@@ -8,4 +8,5 @@
 - @user.albums.each do |album|
   = link_to album.name, edit_album_path(album)
 
-%p= link_to 'new album', new_user_album_path(current_user)
+- if current_user.present?
+  %p= link_to 'new album', new_user_album_path(current_user)

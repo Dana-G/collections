@@ -12,7 +12,7 @@ RSpec.feature 'User edit' do
   end
 
   context 'as an authenticated user' do
-    let(:user) { create_current_user }
+    let!(:user) { create_current_user }
     let(:new_email) { 'goop@great.com' }
 
     scenario 'I can edit my user information' do

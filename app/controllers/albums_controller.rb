@@ -1,6 +1,5 @@
+# # controllers/albums_controller.rb
 class AlbumsController < ApplicationController
-
-
   def index
     @albums = Album.paginate(page: params[:page])
   end
@@ -30,7 +29,6 @@ class AlbumsController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def show

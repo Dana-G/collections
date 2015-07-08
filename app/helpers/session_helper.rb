@@ -5,7 +5,7 @@ module SessionHelper
   end
 
   def signup_link
-    return link_to 'Sign Up', signup_path unless current_user
+    return link_to_unless_current 'Sign Up', signup_path unless current_user
     ''
   end
 
@@ -19,8 +19,13 @@ module SessionHelper
     ''
   end
 
-  def edit_link
-    return link_to 'edit', edit_user_path(current_user) if current_user
+  def user_link
+    return link_to 'User', user_path(current_user) if current_user
     ''
   end
+
+  # def edit_link
+  #   return link_to 'edit', edit_user_path(current_user) if user_path(current_user)
+  #   ''
+  # end
 end

@@ -1,6 +1,6 @@
 # spec/features/user_avatar_spec.rb
 require 'feature_helper'
-RSpec.feature 'User edit' do
+RSpec.feature 'add avatar' do
   let(:email) { 'dgiordano@weblinc.com' }
   let(:password) { 'I am going to use a very secure password' }
   let(:password_confirmation) { 'I am going to use a very secure password' }

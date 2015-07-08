@@ -1,6 +1,6 @@
 # spec/features/user_create_spec.rb
 require 'feature_helper'
-RSpec.feature 'User create' do
+RSpec.feature 'create user' do
   let(:email) { 'dgiordano@weblinc.com' }
   let(:password) { 'I am going to use a very secure password' }
   let(:password_confirmation) { 'I am going to use a very secure password' }

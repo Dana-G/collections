@@ -9,20 +9,21 @@
             %li= message
 
     .field
-      = f.label :email
-      = f.text_field :email
+      %p= f.label :email, 'Email:'
+      %p= f.text_field :email
 
     .field
-      = f.label :password
-      = f.password_field :password
+      %p= f.label :password, 'Password:'
+      %p= f.password_field :password
 
     .field
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation
+      %p= f.label :password_confirmation, 'Password Confirmation:'
+      %p= f.password_field :password_confirmation
 
     .field
-      = f.file_field :avatar
+      %p= f.label :avatar, 'Add avatar:'
+      %p= f.file_field :avatar
 
     .actions
-      = f.submit 'submit'
+      %h1= f.submit 'Sign Up'
 

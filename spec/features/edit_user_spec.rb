@@ -1,6 +1,6 @@
 # spec/features/edit_user_spec.rb
 require 'feature_helper'
-RSpec.feature 'User edit' do
+RSpec.feature 'edit user' do
   let(:other_user) { create(:user) }
   context 'As a guest' do
     scenario 'I can not edit user information' do

@@ -1,3 +1,5 @@
+%h2 Edit User
+%p User:  #{@user.email}
 #edit-user
   = form_for(@user) do |f|
     - if @user.errors.any?
@@ -8,12 +10,13 @@
             %li= message
 
     .field
-      = f.label :email
-      = f.text_field :email
+      %p= f.label :email, 'Email:'
+      %p= f.text_field :email
 
     .field
-      = f.file_field :avatar
+      %p= f.label :avatar, 'Change Avatar:'
+      %p= f.file_field :avatar
 
     .actions
-      = f.submit 'submit'
+      %p= f.submit 'submit'
 

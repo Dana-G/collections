@@ -1,6 +1,6 @@
 # spec/features/user_album7_spec.rb
 require 'feature_helper'
-RSpec.feature 'User edit' do
+RSpec.feature 'create albums' do
   let(:other_user) { create(:user) }
 
   context 'As an authenticated user' do

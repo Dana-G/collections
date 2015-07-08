@@ -1,5 +1,7 @@
-%h1 Album
-
-= link_to @album.name, edit_album_path(current_user)
-
-= link_to 'new', new_user_album_path(current_user)
+%h2 Users Albums
+%ul
+  - @user.albums.each do |album|
+    %li= link_to album.name, edit_album_path(album)
+%ul
+  - if current_user.present?
+    %li= link_to 'Add album', new_user_album_path(current_user)

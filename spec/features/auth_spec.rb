@@ -1,6 +1,6 @@
 # spec/features/auth_spec.rb
 require 'feature_helper'
-RSpec.feature 'User authenticate' do
+RSpec.feature 'User authentication' do
   let(:email) { 'dgiordano@weblinc.com' }
   let(:password) { 'I am going to use a very secure password' }
   let(:password_confirmation) { 'I am going to use a very secure password' }

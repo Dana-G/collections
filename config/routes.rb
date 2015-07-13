@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   get 'snaps/new'
 
   resources :users do
-    resources :albums, shallow: true
+    resources :albums, shallow: true do
+      resources :snaps, shallow: true
+    end
   end
   resources :sessions, only: [:create, :destroy]
 

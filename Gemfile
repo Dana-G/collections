@@ -52,6 +52,7 @@ group :development, :test do
 
   # rails chrome browser helper
   gem 'meta_request'
+
 end
 
 group :test do

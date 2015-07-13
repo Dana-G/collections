@@ -1,5 +1,7 @@
 class Snap < ActiveRecord::Base
-  belongs_to :album, inverse_of: snaps
+  belongs_to :album
+  delegate :user, to: :album
+
 
 
   # dragonfly

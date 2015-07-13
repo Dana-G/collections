@@ -9,13 +9,12 @@ RSpec.feature 'create user' do
     context 'with acceptable information' do
       scenario 'I can register for a new account' do
         visit signup_path
-        click_link('Sign Up')
         within('#new-user') do
           fill_in 'user_email', with: email
           fill_in 'user_password', with: password
           fill_in 'user_password_confirmation', with: password_confirmation
         end
-        click_button('submit')
+        click_button('Sign Up')
         expect(page).to have_content('Thanks for signing up')
       end
     end
@@ -23,14 +22,12 @@ RSpec.feature 'create user' do
       let(:email) { nil }
       scenario 'I can see errors' do
         visit signup_path
-        click_link('Sign Up')
-        expect(page).to have_content('Sign Up')
         within('#new-user') do
           fill_in 'user_email', with: email
           fill_in 'user_password', with: password
           fill_in 'user_password_confirmation', with: password_confirmation
         end
-        click_button('submit')
+        click_button('Sign Up')
         expect(page).to have_content('invalid')
       end
     end

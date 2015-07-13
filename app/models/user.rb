@@ -1,9 +1,8 @@
 #
 class User < ActiveRecord::Base
-  has_many :albums, dependent: :destroy, inverse_of: :user
-
-  # authorization
   has_secure_password
+
+  has_many :albums, dependent: :destroy, inverse_of: :user
 
   # paginate
   self.per_page = 10

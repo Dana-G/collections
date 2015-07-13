@@ -1,6 +1,6 @@
 # spec/features/user_paginate_spec.rb
 require 'feature_helper'
-RSpec.feature 'add pagination' do
+RSpec.feature 'viewing index of users' do
   let!(:other_user) { create(:user) }
   let!(:other_album) { create(:album, user: other_user) }
   let!(:album) { create(:album, user: user) }

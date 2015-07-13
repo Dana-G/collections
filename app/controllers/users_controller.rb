@@ -40,15 +40,6 @@ class UsersController < ApplicationController
 
   private
 
-  def check_user
-    redirect_to root_url, notice: 'unauthorized' unless current_user_match?
-  end
-
-  def current_user_match?
-    return false unless current_user
-    params[:id] == current_user.id.to_s
-  end
-
   def user_params
     params.require(:user).permit(
       :email,

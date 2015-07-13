@@ -1,17 +1,21 @@
-%h2 User Profile
 #user
-%ul
-  %li Email:
-  %li= link_to @user.email, edit_user_path(current_user)
-%ul
-  %li Avatar:
-  %li= link_to avatar(@user), edit_user_path(current_user)
+  %h2 User Profile
+
+  %ul
+    %li Email:
+    %li= "user id: #{@user.id}"
+    %li= link_to @user.email, edit_user_path(@user)
+
+  %ul
+    %li Avatar:
+    %li= link_to avatar(@user), edit_user_path(@user)
 
 
-%h2 Users Albums
-%ul
-  - @user.albums.each do |album|
-    %li= link_to album.name, edit_album_path(album)
-%ul
-  - if current_user.present?
-    %li= link_to 'Add album', new_user_album_path(current_user)
+  %h2 Users Albums
+
+  %ul
+    - @user.albums.each do |album|
+      %li= link_to album.name, edit_album_path(album)
+  %ul
+    - if current_user.present?
+      %li= link_to 'Add album', new_user_album_path(current_user)

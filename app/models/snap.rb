@@ -17,6 +17,4 @@ class Snap < ActiveRecord::Base
                      in: [:jpeg, :jpg, :png, :bmp], case_sensitive: false,
                      message: 'should be either .jpeg, .jpg, .png, .bmp')
 
-
-
 end

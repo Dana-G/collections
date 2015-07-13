@@ -1,5 +1,7 @@
 # # controllers/albums_controller.rb
 class AlbumsController < ApplicationController
+  before_action :check_user, only: [:edit, :update]
+
   def index
     @albums = Album.paginate(page: params[:page])
   end

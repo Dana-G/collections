@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :snaps, shallow: true
     end
   end
+
   resources :sessions, only: [:create, :destroy]
 
   get 'login', to: 'sessions#new', as: 'login'

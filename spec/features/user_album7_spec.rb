@@ -2,30 +2,29 @@
 require 'feature_helper'
 RSpec.feature 'create albums' do
   let(:other_user) { create(:user) }
+  let!(:user) { create_current_user }
+  let!(:album) { create(:album, user: user) }
+  let(:name) { 'namethis' }
+  let!(:other_album) { create(:album, user: other_user) }
 
   context 'As an authenticated user' do
-    let!(:user) { create_current_user }
-    let(:other_user) { create(:user) }
-    let!(:album) { create(:album, user: user) }
-    let(:name) { 'namethis' }
-    let!(:other_album) { create(:album, user: other_user) }
-
-    scenario 'I can add a new image collection to my account' do
+    scenario 'I can add a new album collection to my account' do
       visit user_path(user)
-      click_link('new album')
+      click_link('Add album')
       fill_in 'album_name', with: name
       click_button('submit')
       expect(page).to have_content(name)
     end
 
-    scenario 'A link to this collection will appear on my user profile page' do
+    scenario 'A link to this album collection will appear on my user profile page' do
       visit user_path(user)
       expect(page).to have_link(album.name)
     end
 
-    scenario 'I can edit information for my image collection' do
+    scenario 'I can edit information for my album image collection' do
       visit user_path(user)
-      click_link('new album')
+      expect(page).to have_content('Add album')
+      click_link('Add album')
       fill_in 'Name', with: 'my furbabies'
       click_button('submit')
       expect(page).to have_content('success')

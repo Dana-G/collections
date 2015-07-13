@@ -8,13 +8,12 @@ RSpec.feature 'add avatar' do
   context 'As a non-authenticated user creating an account' do
     scenario 'I can upload a picture for use as an avatar' do
       visit signup_path
-      click_link('Sign Up')
       fill_in 'user_email', with: email
       fill_in 'user_password', with: password
       fill_in 'user_password_confirmation', with: password_confirmation
       page.find('#user_avatar').click
       page.attach_file('user_avatar', './spec/factories/callie.jpg')
-      click_button('submit')
+      click_button('Sign Up')
       expect(page).to have_content('Thanks for signing up')
     end
   end

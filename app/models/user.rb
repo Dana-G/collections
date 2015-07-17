@@ -1,8 +1,10 @@
 #
 class User < ActiveRecord::Base
+  class Unauthorized < StandardError; end
   has_secure_password
 
   has_many :albums, dependent: :destroy, inverse_of: :user
+  accepts_nested_attributes_for :albums
 
   # paginate
   self.per_page = 10

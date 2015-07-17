@@ -1,0 +1,7 @@
+%h2 Users Image
+%ul
+  - @snap.albums.each do |snap|
+    %li= link_to snap.name, edit_snap_path(album)
+%ul
+  - if current_user.present?
+    %li= link_to 'Add snap', new_album_snap(current_user)

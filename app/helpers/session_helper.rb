@@ -20,7 +20,7 @@ module SessionHelper
   end
 
   def user_link
-    return link_to 'User', user_path(current_user) if current_user
+    return link_to 'Account', user_path(current_user) if current_user
     ''
   end
 

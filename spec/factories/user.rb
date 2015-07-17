@@ -11,5 +11,3 @@ FactoryGirl.define do
     password_confirmation 'this is a very secure password'
   end
 end
-
-FactoryGirl.create(:user)

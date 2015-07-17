@@ -17,28 +17,33 @@ class UsersController < ApplicationController
       redirect_to root_path
       flash[:notice] = 'Thanks for signing up.'
     else
+      flash[:notice] = 'There was an issue signing up, please try again.'
       render 'new'
+
     end
   end
 
   def edit
-    @user = User.find(params[:id])
+    user
   end
 
   def update
-    @user = current_user
-    if @user.update_attributes(user_params)
-      redirect_to user_path(current_user), notice: 'success'
+    if user.update_attributes(user_params)
+      redirect_to user_path(user), notice: 'success'
     else
       render :edit
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    user
   end
 
   private
+
+  def user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(

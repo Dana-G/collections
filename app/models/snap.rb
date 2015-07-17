@@ -2,8 +2,6 @@ class Snap < ActiveRecord::Base
   belongs_to :album
   delegate :user, to: :album
 
-
-
   # dragonfly
   extend Dragonfly::Model
   dragonfly_accessor :image

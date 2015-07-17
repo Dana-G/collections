@@ -3,5 +3,5 @@
   - @user.albums.each do |album|
     %li= link_to album.name, edit_album_path(album)
 %ul
-  - if current_user.present?
+  - if logged_in?
     %li= link_to 'Add album', new_user_album_path(current_user)

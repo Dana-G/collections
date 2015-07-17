@@ -1,2 +1,32 @@
-%h1 Snaps#new
-%p Find me in app/views/snaps/new.html.haml
+%h1 Add Snaps
+#new-snaps
+  = form_for ([@snap.album, @album]) do |f|
+    - if @snap.errors.any?
+      .error-messages
+        %h2 Form is invalid
+        %ul
+          - @snap.errors.full_messages.each do |message|
+            %li= message
+
+    .field
+      = f.label :name
+      = f.text_field :name
+
+    .field
+      = f.label :image, 'add image'
+      = f.file_field :image
+
+    .field
+      = f.label :year, 'Add year of image'
+      = f.select :year, (Time.zone.now.year - 50)..(Time.zone.now.year)
+
+    .field
+      = f.label :color, 'Primary image color'
+      = f.text_field :color
+
+    .field
+      = f.label :description 'Image description'
+      = f.text_field :description
+
+    .actions
+      = f.submit 'submit'

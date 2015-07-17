@@ -10,9 +10,9 @@ RSpec.feature 'add images to albums' do
   end
     scenario 'I can add an image to that collection' do
       visit edit_album_path(album)
-      page.attach_file('add image', './spec/factories/magical.jpg')
+      page.attach_file('Change image', './spec/factories/magical.jpg')
       click_button('submit')
-      expect(page).to have_content('Image uploaded')
+      expect(page).to have_content('Album update success')
     end
 
     # scenario 'the first image defaults to primary image' do

@@ -1,1 +1,5 @@
-index.html.haml
+%h1  All Snaps
+%p= will_paginate @snaps
+%ul
+  - @snaps.each do |snap|
+    %li= link_to snap_path, album

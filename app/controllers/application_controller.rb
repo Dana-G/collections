@@ -7,18 +7,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def logged_in?
-    current_user != nil
-  end
-
-  def check_user
-    if logged_in?
-      @current_user
-    else
-    redirect_to root_url, notice: 'unauthorized'
-    end
-  end
-
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end

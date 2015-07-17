@@ -45,6 +45,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def logged_in?
+    return false unless current_user
+    params[:id] == current_user.id.to_s
+  end
+
+  def check_user
+    if logged_in?
+      @current_user
+    else
+    redirect_to root_url, notice: 'unauthorized'
+    end
+  end
+
   def user_params
     params.require(:user).permit(
       :email,

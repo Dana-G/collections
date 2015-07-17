@@ -7,24 +7,18 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
-    if @user
-      @album = @user.albums.build
-    else
-      redirect_to root_path
-      flash[:notice] = 'unauthorized but check_user missed it'
-    end
+    @album = user.albums.new
   end
 
   def create
-    @user = if current_user.id == params[:user_id]
+    if current_user.id == params[:user_id]
       current_user
     else
       User.find(params[:user_id])
     end
-    @album = @user.albums.build(album_params)
-    if @album.save
-      redirect_to @user
+    @album = user.albums.new(album_params)
+    if album.save
+      redirect_to user
       flash[:notice] = 'Album creation success'
     else
       render 'new'
@@ -32,7 +26,7 @@ class AlbumsController < ApplicationController
   end
 
   def edit
-    album
+    user
   end
 
   def update
@@ -44,7 +38,7 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    @album = Album.find(params[:id])
+    album
   end
 
   private
@@ -55,5 +49,24 @@ class AlbumsController < ApplicationController
 
   def album
     @album ||= Album.find(params[:id])
+  end
+
+  #refactored
+  def user
+    return album.user unless params[:user_id].present?
+    @_album ||= User.find(params[:user_id])
+  end
+
+  def logged_in?
+    return false unless current_user
+    params[:id] == current_user.id.to_s
+  end
+
+  def check_user
+    if logged_in?
+      current_user
+    else
+    redirect_to root_url, notice: 'unauthorized'
+    end
   end
 end

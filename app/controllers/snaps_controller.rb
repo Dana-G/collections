@@ -1,3 +1,4 @@
+# app/controller/snaps_controller.rb
 class SnapsController < ApplicationController
   before_action :check_user, except: [:show, :index]
 
@@ -39,16 +40,16 @@ class SnapsController < ApplicationController
   private
 
   def snap_params
-      params.require(:snap).permit(
-        :name,
-        :image_uid,
-        :image_name,
-        :year,
-        :color,
-        :description,
-        :album_id
-      )
-    end
+    params.require(:snap).permit(
+      :name,
+      :image_uid,
+      :image_name,
+      :year,
+      :color,
+      :description,
+      :album_id
+    )
+  end
 
   def snap
     @snap ||= Snap.find(params[:id])

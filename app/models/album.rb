@@ -4,7 +4,6 @@ class Album < ActiveRecord::Base
   has_many :snaps
   accepts_nested_attributes_for :snaps
 
-
   validates :name,
             presence: true,
             uniqueness: { case_sensitive: false, scope: :user_id }
@@ -19,4 +18,3 @@ class Album < ActiveRecord::Base
     User.exists?(user_id)
   end
 end
-

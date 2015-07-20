@@ -1,3 +1,4 @@
+# app/models/snap.rb
 class Snap < ActiveRecord::Base
   belongs_to :album
   delegate :user, to: :album
@@ -14,5 +15,4 @@ class Snap < ActiveRecord::Base
                      of: :image,
                      in: [:jpeg, :jpg, :png, :bmp], case_sensitive: false,
                      message: 'should be either .jpeg, .jpg, .png, .bmp')
-
 end

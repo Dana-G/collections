@@ -11,11 +11,7 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    if current_user.id == params[:user_id]
-      current_user
-    else
-      User.find(params[:user_id])
-    end
+    current_user?
     @album = user.albums.new(album_params)
     if album.save
       redirect_to user
@@ -51,10 +47,18 @@ class AlbumsController < ApplicationController
     @album ||= Album.find(params[:id])
   end
 
-  #refactored
+  # refactored
   def user
     return album.user unless params[:user_id].present?
     @_album ||= User.find(params[:user_id])
+  end
+
+  def current_user?
+    if current_user.id == params[:user_id]
+      current_user
+    else
+      User.find(params[:user_id])
+    end
   end
 
   def logged_in?
@@ -66,7 +70,7 @@ class AlbumsController < ApplicationController
     if logged_in?
       current_user
     else
-    redirect_to root_url, notice: 'unauthorized'
+      redirect_to root_url, notice: 'unauthorized'
     end
   end
 end

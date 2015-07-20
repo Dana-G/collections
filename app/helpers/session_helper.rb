@@ -23,9 +23,9 @@ module SessionHelper
     return link_to 'Account', user_path(current_user) if current_user
     ''
   end
-
   # def edit_link
-  #   return link_to 'edit', edit_user_path(current_user) if user_path(current_user)
+  #   return link_to 'edit'
+  #   edit_user_path(current_user) if user_path(current_user)
   #   ''
   # end
 end

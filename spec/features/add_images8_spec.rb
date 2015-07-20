@@ -8,29 +8,30 @@ RSpec.feature 'add images to albums' do
 
   context 'As an authenticated user with a collection' do
   end
-    scenario 'I can add an image to that collection' do
-      visit edit_album_path(album)
-      page.attach_file('Change image', './spec/factories/magical.jpg')
-      click_button('submit')
-      expect(page).to have_content('Album update success')
-    end
+  scenario 'I can add an image to that collection' do
+    visit edit_album_path(album)
+    page.attach_file('Change image', './spec/factories/magical.jpg')
+    click_button('submit')
+    expect(page).to have_content('Album update success')
+  end
 
-    # scenario 'the first image defaults to primary image' do
-    # end
+  # scenario 'the first image defaults to primary image' do
 
-    # scenario 'the primary image appears next to its link on user profile page' do
-    # end
+  # end
 
-    # scenario 'primary image can be replaced by any image' do
-    # end
+  # scenario ' primary image appears next to its link on user profile page' do
+  # end
 
-    # scenario 'all images include a dropdown \'year\' for image year' do
-    # end
+  # scenario 'primary image can be replaced by any image' do
+  # end
 
-    # scenario 'all images include a dropdown \'color\' for primary image color' do
-    # end
+  # scenario 'all images have a dropdown \'year\' for image year' do
+  # end
 
-    # scenario 'all images include a text description field' do
+  # scenario 'all images have a dropdown \'color\' for primary image color' do
+  # end
 
-    # end
+  # scenario 'all images have a text description field' do
+
+  # end
 end

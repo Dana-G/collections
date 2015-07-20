@@ -7,7 +7,7 @@ module SessionTestHelpers
   #
   def create_current_user(params = {})
     @_current_user = create(:user, params)
-    page.set_rack_session(user_id: @_current_user.id)
+    page.set_rack_session(current_user_id: @_current_user.id)
     @_current_user
   end
 end

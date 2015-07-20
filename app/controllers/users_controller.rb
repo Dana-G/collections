@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:user_id] = @user.id
+      session[:current_user_id] = @user.id
       redirect_to root_path
       flash[:notice] = 'Thanks for signing up.'
     else
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
     if logged_in?
       @current_user
     else
-    redirect_to root_url, notice: 'unauthorized'
+      redirect_to root_url, notice: 'unauthorized'
     end
   end
 

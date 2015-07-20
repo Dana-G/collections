@@ -16,7 +16,7 @@ RSpec.feature 'create albums' do
       expect(page).to have_content(name)
     end
 
-    scenario 'A link to this album collection will appear on my user profile page' do
+    scenario 'My user profile page contains a link to my album collection' do
       visit user_path(user)
       expect(page).to have_link(album.name)
     end
